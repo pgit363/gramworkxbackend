@@ -66,9 +66,9 @@ class FileUploadController extends Controller
             
             $filename = $file->getClientOriginalName(); 
             
-            $path = Storage::disk('local')->putFileAs('/firmwares/', $request->file('firmware_file'), $filename);
-
-            $input['firmware_file'] = storage_path('firmwares/').$filename;
+            $path = Storage::disk('local')->putFileAs('public/uploads/device_firmwares', $request->file('firmware_file'), $filename);
+logger($path);
+            $input['firmware_file'] = Storage::url($path);//storage_path('uploads/device_firmwares/').$filename;
             
             Log::info("FILE STORED".$input['firmware_file']);
         }
