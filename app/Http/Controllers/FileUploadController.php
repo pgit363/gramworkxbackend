@@ -45,9 +45,10 @@ class FileUploadController extends Controller
      */
     public function store(Request $request)
     {
+        logger($request->all());
         $validator = Validator::make($request->all(), [
-            'device_model' => 'required',
-            'firmware_version' => 'required',         
+            'device_model' => 'required|string',
+            'firmware_version' => 'required|string',         
             'firmware_file' => 'required',
         ]);
 
